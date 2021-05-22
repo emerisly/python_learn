@@ -5,12 +5,12 @@ def createSquare(size):
         print("Error in size")
     else:
         # create square of given size (all value is 1)
-        for i in range(size):
-            new = []
-            for j in range(size):
-                new.append(1)
-            square.append(new)
-            
+for i in range(size):
+        new = []
+        for j in range(size):
+            new.append(1)
+        square.append(new)
+
 # returns the sum of a given row
 def sumRow(row):
     return sum(square[row])
@@ -40,6 +40,8 @@ def sumOtherDiag():
 
 # returns if the square is magic
 def magic():
+    row_sum_0 = sumRow(0)
+    col_sum_0 = sumCol(0)
     # check if diagonals are equal
     if sumOtherDiag() == sumMainDiag():
         for c in range(len(square)):
@@ -47,10 +49,10 @@ def magic():
             if sumRow(c) != sumCol(c):
                 return False
             # check if the sum for every row is equal
-            elif sumRow(c) != sumRow(0):
+            elif sumRow(c) != row_sum_0:
                 return False
             # check if the sum for every column is equal
-            elif sumCol(c) != sumCol(0):
+            elif sumCol(c) != col_sum_0:
                 return False
             # if everything equal, return true
             else:
